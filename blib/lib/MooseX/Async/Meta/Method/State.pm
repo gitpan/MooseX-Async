@@ -1,30 +1,45 @@
-package MooseX::Async;
-our $VERSION = 0.05;
+package MooseX::Async::Meta::Method::State;
+use strict;
+use Moose;
+extends qw(Moose::Meta::Method);
 
+no Moose;
 1;
 __END__
 
 =head1 NAME
 
-MooseX::Async - The Orphanange of Asynchronous Love Children
-
-=head1 VERSION
-
-This document describes MooseX::Async Version 0.01
+MooseX::Async::Meta::Method::State - A Method Metaclass for MooseX::Async
 
 =head1 SYNOPSIS
 
-  There space left intentionally blank.
-
+    method_metaclass 'MooseX::Async::Meta::Class';
+  
 =head1 DESCRIPTION
 
-MooseX::Async is a set of Metaclasses for MooseX::POE and it's siblings. 
-Please see them for documentation.
+A metaclass for MooseX::Async. This module is only of use to developers 
+so there is no user documentation provided.
 
+=head1 METHODS
+
+=over
+
+=item meta
+
+The metaclass accessor provided by C<Moose::Object>.
+
+=back
 
 =head1 DEPENDENCIES
 
-L<Moose>
+=for author to fill in:
+    A list of all the other modules that this module relies upon,
+    including any restrictions on versions, and an indication whether
+    the module is part of the standard Perl distribution, part of the
+    module's distribution, or must be installed separately. ]
+
+L<Moose::Meta::Class>, L<MooseX::Async::Meta::Instance>
+
 
 =head1 INCOMPATIBILITIES
 
@@ -52,7 +67,7 @@ None reported.
 No bugs have been reported.
 
 Please report any bugs or feature requests to
-C<bug-moosex-poe@rt.cpan.org>, or through the web interface at
+C<bug-moose-async@rt.cpan.org>, or through the web interface at
 L<http://rt.cpan.org>.
 
 

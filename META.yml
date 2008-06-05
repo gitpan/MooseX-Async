@@ -18,5 +18,5 @@ no_index:
     - t
 requires: 
   Moose: 0.26
-  MooseX::AttributeHelpers: 0
-version: 0.04
+  MooseX::AttributeHelpers: 0.09
+version: 0.05

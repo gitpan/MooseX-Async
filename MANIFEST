@@ -1,3 +1,18 @@
+blib/arch/.exists
+blib/arch/auto/MooseX/Async/.exists
+blib/bin/.exists
+blib/lib/auto/MooseX/Async/.exists
+blib/lib/MooseX/.exists
+blib/lib/MooseX/Async.pm
+blib/lib/MooseX/Async/Meta/Class.pm
+blib/lib/MooseX/Async/Meta/Method/State.pm
+blib/lib/MooseX/Async/Meta/Role.pm
+blib/man1/.exists
+blib/man3/.exists
+blib/man3/MooseX::Async.3
+blib/man3/MooseX::Async::Meta::Class.3
+blib/man3/MooseX::Async::Meta::Method::State.3
+blib/script/.exists
 Build.PL
 Changes
 inc/Module/AutoInstall.pm
@@ -16,8 +31,11 @@ lib/MooseX/Async.pm
 lib/MooseX/Async/Meta/Class.pm
 lib/MooseX/Async/Meta/Method/State.pm
 lib/MooseX/Async/Meta/Role.pm
+Makefile
 Makefile.PL
 MANIFEST			This list of files
+MANIFEST.SKIP
 META.yml
+pm_to_blib
 README
 t/01_use.t

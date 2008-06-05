@@ -1,30 +1,93 @@
-package MooseX::Async;
-our $VERSION = 0.05;
+package MooseX::Async::Meta::Class;
+use Moose;
+use MooseX::Async::Meta::Method::State;
+use MooseX::AttributeHelpers;
 
+extends qw(Moose::Meta::Class);
+
+has events => (
+    reader     => 'get_events',
+    metaclass  => 'Collection::Array',
+    isa        => 'ArrayRef',
+    auto_deref => 1,
+    lazy_build => 1,
+    builder    => 'default_events',
+    provides   => { push => 'add_event', }
+);
+
+sub default_events {
+    return [qw(START STOP)];
+}
+
+sub get_state_method_name {
+    my ( $self, $name ) = @_;
+    return $name if $self->has_method($name);
+    return undef;
+}
+
+sub add_state_method {
+    my ( $self, $name, $method ) = @_;
+    if ( $self->has_method($name) ) {
+        my $full_name = $self->get_method($name)->fully_qualified_name;
+        confess
+"Cannot add a state method ($name) if a local method ($full_name) is already present";
+    }
+
+    $self->add_event($name);
+    $self->add_method( $name => $method );
+}
+
+after add_role => sub {
+    my ( $self, $role ) = @_;
+
+    if ( $role->isa("MooseX::Async::Meta::Role") ) {
+        $self->add_event($role->get_events);
+    }
+};
+
+no Moose;
 1;
 __END__
 
 =head1 NAME
 
-MooseX::Async - The Orphanange of Asynchronous Love Children
-
-=head1 VERSION
-
-This document describes MooseX::Async Version 0.01
+MooseX::Async::Meta::Class - A Class Metaclass for MooseX::Async
 
 =head1 SYNOPSIS
 
-  There space left intentionally blank.
-
+    metaclass 'MooseX::Async::Meta::Class';
+  
 =head1 DESCRIPTION
 
-MooseX::Async is a set of Metaclasses for MooseX::POE and it's siblings. 
-Please see them for documentation.
+A metaclass for MooseX::Async. This module is only of use to developers 
+so there is no user documentation provided.
 
+=head1 METHODS
+
+=over
+
+=item initialize
+
+=item add_state_method
+
+=item get_method_map
+
+=item meta
+
+The metaclass accessor provided by C<Moose::Object>.
+
+=back
 
 =head1 DEPENDENCIES
 
-L<Moose>
+=for author to fill in:
+    A list of all the other modules that this module relies upon,
+    including any restrictions on versions, and an indication whether
+    the module is part of the standard Perl distribution, part of the
+    module's distribution, or must be installed separately. ]
+
+L<Moose::Meta::Class>, L<MooseX::Async::Meta::Instance>
+
 
 =head1 INCOMPATIBILITIES
 
@@ -52,7 +115,7 @@ None reported.
 No bugs have been reported.
 
 Please report any bugs or feature requests to
-C<bug-moosex-poe@rt.cpan.org>, or through the web interface at
+C<bug-moose-poe-object@rt.cpan.org>, or through the web interface at
 L<http://rt.cpan.org>.
 
 
