@@ -1,5 +1,5 @@
 package MooseX::Async;
-our $VERSION = 0.06;
+our $VERSION = 0.07;
 
 1;
 __END__
@@ -21,33 +21,16 @@ This document describes MooseX::Async Version 0.01
 MooseX::Async is a set of Metaclasses for MooseX::POE and it's siblings. 
 Please see them for documentation.
 
-
 =head1 DEPENDENCIES
 
 L<Moose>
 
 =head1 INCOMPATIBILITIES
 
-=for author to fill in:
-    A list of any modules that this module cannot be used in conjunction
-    with. This may be due to name conflicts in the interface, or
-    competition for system or program resources, or due to internal
-    limitations of Perl (for example, many modules that use source code
-    filters are mutually incompatible).
-
 None reported.
 
 
 =head1 BUGS AND LIMITATIONS
-
-=for author to fill in:
-    A list of known problems with the module, together with some
-    indication Whether they are likely to be fixed in an upcoming
-    release. Also a list of restrictions on the features the module
-    does provide: data types that cannot be handled, performance issues
-    and the circumstances in which they may arise, practical
-    limitations on the size of data sets, special cases that are not
-    (yet) handled, etc.
 
 No bugs have been reported.
 
